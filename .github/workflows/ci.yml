@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build (strict warnings)
+        run: make
+
+      - name: Unit + integration tests
+        run: make test
+
+      - name: AddressSanitizer + UBSan
+        run: make asan
+
+      - name: ThreadSanitizer (agent/server)
+        run: make tsan
+
+      - name: Valgrind (unit tests)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y valgrind
+          make valgrind

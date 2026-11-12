@@ -1,0 +1,12 @@
+build/
+build-asan/
+build-tsan/
+*.o
+*.d
+*.csv
+*.log
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+build-linux/

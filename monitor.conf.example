@@ -1,0 +1,17 @@
+# sysmon / sysmon-agent / sysmon-server configuration.
+# Pass with:  -c monitor.conf     (command-line flags override this file)
+
+interval          = 2        # seconds between samples (0.1 - 3600)
+disk_path         = /        # filesystem to report
+
+# sysmon only
+top               = 5        # processes to list
+# log_file        = sysmon.csv
+
+# agent only
+server_host       = 127.0.0.1
+server_port       = 9090
+# agent_id        = web-01   # default: hostname
+
+# server and agent
+heartbeat_timeout = 10       # seconds of silence before a peer is considered dead
